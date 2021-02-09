@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue-Dischi-Musicali-Boolean</title>
+        <!-- LINK: Font family -->
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <!-- SCRIPT: Collegamento Vue JS -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+        <!-- SCRIPT: Collegamento Axios  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+        <!-- LINK: Style CSS -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- CONTENITORE: Box su cui applico Vue js  -->
+        <div id="Container-generale">
+
+            <!-- CONTENITORE: Header   -->
+            <header>
+                <!-- CONTENITORE: Img logo + select  -->
+                <div class="container">
+                    <img src="logo.png" alt="logo" />
+                    <h1>Bootify</h1>
+                    <select v-model='visualizza'>
+                        <option :value="genere" v-for='(genere, index) in generi' >{{genere}}</option>
+                    </select>
+                </div>
+                <!--FINE CONTENITORE: Img logo + select  -->
+            </header>
+            <!-- FINE CONTENITORE: Header   -->
+    
+            <!-- CONTAINER: Box per albums  -->
+            <div class="cds-container container">
+                <div v-if='visualizza == album.genre || visualizza == "All"' v-for='album in albums'  class="cd">
+                    <img  :src="album.poster" alt="">
+                    <h3>{{album.title}}</h3>
+                    <span class="author">{{album.author}}</span>
+                    <span class="year">{{album.year}}</span>
+                </div>
+            </div>
+            <!--FINE CONTAINER: Box per albums  -->
+
+        </div>
+        <!--FINE CONTENITORE: Box su cui applico Vue js  -->
+        
+        <!-- SCRIPT: Collegamento Script  -->
+        <script src="main.js" charset="utf-8"></script>
+    </body>
+</html>
